@@ -22,6 +22,9 @@ export default {
     <div><h1>Last order</h1></div>
     <div>
       <p>
+        <span class="green">Ordered on: </span>{{ orderData.date }}
+      </p>
+      <p>
         <span class="green">Email: </span>{{ orderData.email }}
       </p>
       <p>

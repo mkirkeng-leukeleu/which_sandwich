@@ -6,22 +6,42 @@ export default {
     data() {
         return {
           isLoading: false,
-          orderSent: false,
-          order: {}
+          order: null
         };
+    },
+    created() {
+      this.fetchOrder();
     },
     components: { SandWichForm, OrderView },
     methods: {
-      submit(data) {
+      fetchOrder() {
         this.isLoading = true;
         
-        // go to api
-        setTimeout(() => {
-          this.order = data;
-          this.orderSent = true;
-          this.isLoading = false;
-        }, 3000)
-
+        // ask API if there's an order already saved
+        fetch(import.meta.env.VITE_API_URL + "/order")
+          .then(res => res.json())
+          .then(json => {
+            this.order = (Object.keys(json).length == 0) ? null : json;
+            this.isLoading = false;
+          }) // no error handling :(
+      },
+      submitOrder(data) {
+        this.isLoading = true;
+        
+        // submit an order to the API
+        fetch(
+          import.meta.env.VITE_API_URL + "/order",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data) 
+          }
+        )
+          .then(res => res.json())
+          .then(json => {
+            this.order = json;
+            this.isLoading = false;
+          }) // no error handling :(
       }
     }
 }
@@ -31,7 +51,7 @@ export default {
   <div class="loading" v-if="isLoading">
     Loading...
   </div>
-  <OrderView :orderData="order" v-else-if="orderSent"/>
-  <SandWichForm v-else @submitForm="submit"/>
+  <OrderView :orderData="order" v-else-if="order"/>
+  <SandWichForm v-else @submitForm="submitOrder"/>
 
 </template>
