@@ -1,19 +1,14 @@
-<script setup>
-import HelloWorld from "./components/HelloWorld.vue";
-import MainContent from "./components/MainContent.vue";
-import MainHeader from "./components/MainHeader.vue";
-import SandWichForm from "./components/SandWichForm.vue";
-import TheWelcome from "./components/TheWelcome.vue";
+<script>
 </script>
 
 <template>
-  <header>
-    <MainHeader/>
-  </header>
-
-  <main>
-    <MainContent />
-  </main>
+    <header>
+      <MainHeader/>
+    </header>
+  
+    <main>
+      <MainContent />
+    </main>
 </template>
 
 <style scoped>

@@ -1,6 +1,4 @@
 <script>
-import sandwich from "../assets/sandwich.svg"
-
 export default {
   props: {
     title: {
