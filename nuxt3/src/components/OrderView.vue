@@ -1,22 +1,3 @@
-<script>
-import sandwiches from '../sandwiches';
-
-export default {
-    props: {
-      orderData: {
-        type: Object
-      }
-    },
-    computed: {
-      getSandwichName() {
-        return sandwiches.filter((sandwich) => {
-          return sandwich.id == this.orderData.sandwich
-        })[0].name
-      }
-    }
-}
-</script>
-
 <template>
   <div class="container">
     <div>
@@ -36,8 +17,28 @@ export default {
   </div>
 </template>
 
+<script>
+import sandwiches from '../sandwiches';
+
+export default {
+    props: {
+      orderData: {
+        type: Object
+      }
+    },
+    computed: {
+      getSandwichName() {
+        return sandwiches.filter((sandwich) => {
+          return sandwich.id == this.orderData.sandwich
+        })[0].name
+      }
+    }
+}
+</script>
+
 <style scoped>
 .container {
   display: block;
+  padding: 0.5rem;
 }
 </style>

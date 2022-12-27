@@ -1,15 +1,17 @@
 <template>
   <!-- <pre v-if="data">{{ data }}</pre> -->
-  <header>
-    <MainHeader/>
-  </header>
-  
-  <main>
-    <div v-for="order in data" class="container">
-      <OrderView :orderData="order"/>
-      <br />
+  <NuxtLayout>
+    <div class="wrapper">
+      <div class="orderlist">
+        <div v-for="order in data">
+          <OrderView :orderData="order"/>
+        </div>
+      </div>
+      <NuxtLink to="/">
+        Go back to the homepage...
+      </NuxtLink>
     </div>
-  </main>
+  </NuxtLayout>
 </template>
 
 <script>
@@ -34,30 +36,11 @@ export default {
 </script>
 
 <style scoped>
-header {
-  line-height: 1.5;
-}
-
-main {
-  padding: 1rem;
+.orderlist {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  overflow-y: scroll;
+  max-height: 75vh;
 }
 
-@media (min-width: 1024px) {
-  main::before {
-    position: absolute;
-    left: 0;
-    content: " ";
-    border-left: 1px solid var(--color-border);
-    height: 80%;
-  }
-
-  header {
-    display: flex;
-    place-items: center;
-  }
-}
 </style>
