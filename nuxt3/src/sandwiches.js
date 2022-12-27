@@ -1,4 +1,4 @@
- const sandwiches = [
+const sandwiches = [
   {
     name: "Old cheese sandwich",
     id: "oldCheeseSandwich"
