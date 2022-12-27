@@ -1,40 +1,53 @@
-<script>
-</script>
-
 <template>
-  <header>
-    <MainHeader/>
-  </header>
-
-  <main>
-    <MainContent />
-  </main>
+  <NuxtLayout>
+    <div class="loading" v-if="isLoading">
+      Loading...
+    </div>
+    <LastOrder :orderData="order" v-else-if="order"/>
+    <SandWichForm v-else @submitForm="submitOrder"/>
+  </NuxtLayout>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<script>
+export default {
+    setup() {
+        const appConfig = useAppConfig();
+        return { appConfig };
+    },
+    data() {
+        return {
+            isLoading: false,
+            order: null
+        };
+    },
+    created() {
+        this.fetchOrder();
+    },
+    methods: {
+        fetchOrder() {
+            this.isLoading = true;
+            // ask API if there's an order already saved
+            fetch(this.appConfig.API_URL + "/orders?today")
+                .then(res => res.json())
+                .then(json => {
+                this.order = (json.length == 0) ? null : json;
+                this.isLoading = false;
+            }); // no error handling :(
+        },
+        submitOrder(data) {
+            this.isLoading = true;
+            // submit an order to the API
+            fetch(this.appConfig.API_URL + "/orders", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            })
+                .then(res => res.json())
+                .then(json => {
+                this.order = json;
+                this.isLoading = false;
+            }); // no error handling :(
+        }
+    }
 }
-
-main {
-  padding: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-@media (min-width: 1024px) {
-  main::before {
-    position: absolute;
-    left: 0;
-    content: " ";
-    border-left: 1px solid var(--color-border);
-    height: 100%;
-  }
-
-  header {
-    display: flex;
-    place-items: center;
-  }
-}
-</style>
+</script>

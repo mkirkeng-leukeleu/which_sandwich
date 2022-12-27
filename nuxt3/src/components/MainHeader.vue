@@ -10,7 +10,9 @@
 
     <div class="wrapper">
       <div class="greetings">
-        <h1 class="green">{{ title }}</h1>
+        <NuxtLink to="/">
+          <h1 class="green">{{ title }}</h1>
+        </NuxtLink>
         <h3>{{ subtitle }}</h3>
       </div>
     </div>
