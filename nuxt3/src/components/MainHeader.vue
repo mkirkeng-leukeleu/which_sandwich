@@ -1,18 +1,3 @@
-<script>
-export default {
-  props: {
-    title: {
-      type: String,
-      default: "Which Sandwich?"
-    },
-    subtitle: {
-      type: String,
-      default: "Time to choose!"
-    }
-  }
-}
-</script>
-
 <template>
   <div class="header">
     <img
@@ -31,6 +16,21 @@ export default {
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    title: {
+      type: String,
+      default: "Which Sandwich?"
+    },
+    subtitle: {
+      type: String,
+      default: "Time to choose!"
+    }
+  }
+}
+</script>
 
 <style scoped>
 .logo {

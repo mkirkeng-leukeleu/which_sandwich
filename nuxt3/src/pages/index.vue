@@ -2,13 +2,13 @@
 </script>
 
 <template>
-    <header>
-      <MainHeader/>
-    </header>
-  
-    <main>
-      <MainContent />
-    </main>
+  <header>
+    <MainHeader/>
+  </header>
+
+  <main>
+    <MainContent />
+  </main>
 </template>
 
 <style scoped>

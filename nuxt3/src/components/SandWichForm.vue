@@ -1,25 +1,3 @@
-<script>
-import sandwiches from "../sandwiches"
-
-export default {
-  created() {
-    this.sandwiches = sandwiches;
-  },
-  methods: {
-    // possibly use v-model instead of collecting the data manually
-    submitForm(e) {
-      const data = {
-        email: e.target.elements.email.value,
-        sandwich: e.target.elements.sandwich.value,
-        breadType: e.target.elements.breadType.value,
-      }
-
-      this.$emit('submitForm', data)
-    }
-  }
-}
-</script>
-
 <template>
     <form @submit.prevent="submitForm">
       <div class="inputSet">
@@ -59,6 +37,28 @@ export default {
       </div>
     </form>
 </template>
+
+<script>
+import sandwiches from "../sandwiches"
+
+export default {
+  created() {
+    this.sandwiches = sandwiches;
+  },
+  methods: {
+    // possibly use v-model instead of collecting the data manually
+    submitForm(e) {
+      const data = {
+        email: e.target.elements.email.value,
+        sandwich: e.target.elements.sandwich.value,
+        breadType: e.target.elements.breadType.value,
+      }
+
+      this.$emit('submitForm', data)
+    }
+  }
+}
+</script>
 
 <style scoped>
 .inputSet {
