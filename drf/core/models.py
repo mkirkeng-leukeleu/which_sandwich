@@ -23,6 +23,8 @@ class Order(models.Model):
     # the current settings allow the field to be edited via the admin panel
     order_date = models.DateTimeField(auto_now_add=False, blank=True)
 
+    # this is also only neccessary when wanting to edit order_date
+    # via the admin panel
     def create(self, *args, **kwargs):
         self.order_date = dt.now()
 

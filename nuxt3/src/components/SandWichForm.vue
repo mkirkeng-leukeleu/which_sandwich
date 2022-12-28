@@ -60,47 +60,6 @@ export default {
 }
 </script>
 
-<style scoped>
-.inputSet {
-  margin: 2rem;
-}
+<style scoped  src="../assets/forms.css">
 
-fieldset {
-  border-width: 2px;
-  border-style: solid;
-  border-color: var(--color-border);
-  border-radius: 2%;
-}
-
-label {
-  padding: 0.3rem;
-}
-
-input[type="email"] {
-  color: black;
-}
-
-.buttonContainer {
-  display: flex;
-  justify-content: center;
-}
-
-button[type="submit"] {
-  border: none;
-  padding: 10px;
-  background-color: rgb(182, 203, 81);
-  box-shadow: 0 0 0px 0px rgba(183, 203, 81, 0.3);
-  transition: box-shadow 0.1s ease-in-out;
-}
-
-button[type="submit"]:hover {
-  border: none;
-  padding: 10px;
-  box-shadow: 0 0 20px 5px rgba(182, 203, 8, 0.3);
-}
-
-button[type="submit"]:active {
-  transform: scale(90%);
-  box-shadow: 0 0 0px 0px rgba(183, 203, 81, 0.3);
-}
 </style>

@@ -17,6 +17,10 @@
 <script>
 export default {
   setup() {
+    definePageMeta({
+      middleware: "require-auth",
+    }) // options API doesn't seem to work
+
     const appConfig = useAppConfig();
     return { appConfig };
   },
