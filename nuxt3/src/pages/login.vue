@@ -25,6 +25,10 @@
 <script>
 export default {
   setup() {
+    definePageMeta({
+      middleware: "require-not-auth"
+    })
+
     const appConfig = useAppConfig();
     return { appConfig }
   },
