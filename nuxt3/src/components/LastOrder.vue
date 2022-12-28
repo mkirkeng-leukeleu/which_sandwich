@@ -3,8 +3,8 @@
     <div><h1>Last order</h1></div>
     <OrderView :orderData="orderData"/>
     <br/>
-    <NuxtLink to="/orderhistory">
-      See full order history...
+    <NuxtLink to="/">
+      Go back to the homepage...
     </NuxtLink>
   </div>
 </template>

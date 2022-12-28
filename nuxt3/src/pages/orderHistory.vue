@@ -1,5 +1,4 @@
 <template>
-  <!-- <pre v-if="data">{{ data }}</pre> -->
   <NuxtLayout>
     <div class="wrapper">
       <div class="orderlist">
