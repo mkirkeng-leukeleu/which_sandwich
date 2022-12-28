@@ -21,14 +21,15 @@ class Order(models.Model):
     
     # TODO: set auto_now_add to true and blank to false
     # the current settings allow the field to be edited via the admin panel
-    order_date = models.DateTimeField(auto_now_add=False, blank=True)
+    order_date = models.DateTimeField(auto_now_add=False, blank=True, null=True)
 
     # this is also only neccessary when wanting to edit order_date
     # via the admin panel
-    def create(self, *args, **kwargs):
-        self.order_date = dt.now()
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.order_date = dt.now()
 
-        super().create(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     def __str__(self) -> str:
         return f"{self.owner.username} ({str(self.order_date)})"

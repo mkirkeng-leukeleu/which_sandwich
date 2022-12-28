@@ -30,7 +30,12 @@ export default {
     }
   },
   mounted() {
-    fetch(this.appConfig.API_URL + "/orders")
+    fetch(this.appConfig.API_URL + "/orders", {
+      headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Token " + localStorage.getItem("API_token")
+        }
+    })
       .then(res => res.json())
       .then(json => {
         this.data = json;

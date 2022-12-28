@@ -18,9 +18,7 @@ class OrderList(APIView):
     def get(self, request):
         # TODO: sort orders by date
         if 'today' in request.query_params:
-            orders = [
-                request.user.orders.filter(order_date__date=dt.now().date()).last()
-            ]
+            orders = request.user.orders.filter(order_date__date=dt.now().date())
         else:
             orders = request.user.orders.all()
 

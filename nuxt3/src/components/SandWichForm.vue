@@ -51,7 +51,7 @@ export default {
       const data = {
         email: e.target.elements.email.value,
         sandwich: e.target.elements.sandwich.value,
-        breadType: e.target.elements.breadType.value,
+        bread_type: e.target.elements.breadType.value,
       }
 
       this.$emit('submitForm', data)

@@ -43,7 +43,7 @@ export default {
         "password": e.target.elements.password.value,
       }
       
-      fetch("http://localhost:8000/" + "/get-api-token", {
+      fetch(this.appConfig.API_URL + "/get-api-token/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)

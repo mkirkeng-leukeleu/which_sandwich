@@ -2,7 +2,7 @@
   <div class="container">
     <div>
       <p>
-        <span class="green">Ordered on: </span>{{ orderData.date }}
+        <span class="green">Ordered on: </span>{{ orderData.order_date }}
       </p>
       <p>
         <span class="green">Email: </span>{{ orderData.email }}
@@ -11,7 +11,7 @@
         <span class="green">Sandwich: </span>{{ getSandwichName }}
       </p>
       <p>
-        <span class="green">Bread type: </span>{{ orderData.breadType }}
+        <span class="green">Bread type: </span>{{ orderData.bread_type }}
       </p>
     </div>
   </div>
