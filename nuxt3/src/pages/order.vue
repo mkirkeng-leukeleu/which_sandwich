@@ -40,9 +40,9 @@ export default {
       })
 				.then(res => res.json())
 				.then(json => {
-				this.order = (json.length == 0) ? null : json[0];
-				this.isLoading = false;
-			}); // no error handling :(
+					this.order = (json.length == 0) ? null : json[0];
+					this.isLoading = false;
+				}); // no error handling :(
 		},
 		submitOrder(data) {
 			this.isLoading = true;
@@ -58,9 +58,9 @@ export default {
 			})
 				.then(res => res.json())
 				.then(json => {
-				this.order = json;
-				this.isLoading = false;
-			}); // no error handling :(
+					this.order = json;
+					this.isLoading = false;
+				}); // no error handling :(
 		}
 	}
 }
