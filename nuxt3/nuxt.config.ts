@@ -4,5 +4,8 @@ export default defineNuxtConfig({
   ssr: false,
   app: {
     rootId: 'app'
-  }
+  },
+  modules: [
+    '@nuxt/content'
+  ]
 })
