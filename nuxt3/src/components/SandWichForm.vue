@@ -39,11 +39,18 @@
 </template>
 
 <script>
-import sandwiches from "../sandwiches"
-
 export default {
+  setup() {
+    const appConfig = useAppConfig();
+    return { appConfig }
+  },
+  data() {
+    return {
+      sandwiches: [],
+    }
+  },
   created() {
-    this.sandwiches = sandwiches;
+    this.getSandwichList();
   },
   methods: {
     // possibly use v-model instead of collecting the data manually
@@ -55,6 +62,12 @@ export default {
       }
 
       this.$emit('submitForm', data)
+    },
+    getSandwichList() {
+      fetch(
+        this.appConfig.API_URL + '/sandwiches/pages/?type=sandwiches.sandwich&fields=_,id,slug,name'
+      ).then(res => res.json())
+      .then(json => this.sandwiches = json.items)
     }
   }
 }

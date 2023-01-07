@@ -5,6 +5,7 @@
       <ul>
         <NuxtLink to="/order"><li>🧾 Order</li></NuxtLink>
         <NuxtLink to="/orderHistory"><li>📜 Order history</li></NuxtLink>
+        <NuxtLink to="/sandwiches"><li>🥪 Sandwiches</li></NuxtLink>
         <NuxtLink to="/about"><li>📖 About</li></NuxtLink>
         <NuxtLink to="/logout"><li>🛑 Log out</li></NuxtLink>
       </ul>

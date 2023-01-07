@@ -1,12 +1,6 @@
 from django.db import models
 from datetime import datetime as dt
-
-# TODO: create models for sandwhiches
-SANDWICH_CHOICES = [
-    (OLDCHEESE := 'oldCheeseSandwich', 'Old cheese sandwich'),
-    (OLDCHEESE := 'youngCheeseSandwich', 'Young cheese sandwich'),
-    (OLDCHEESE := 'humusSandwich', 'Humus sandwich'),
-]
+from sandwiches.models import Sandwich
 
 BREAD_TYPE_CHOICES = [
     (BROWN := 'brown', 'Brown'),
@@ -16,7 +10,7 @@ BREAD_TYPE_CHOICES = [
 class Order(models.Model):
     owner = models.ForeignKey('auth.User', related_name='orders', on_delete=models.CASCADE)
     email = models.EmailField()
-    sandwich = models.CharField(max_length=255, choices=SANDWICH_CHOICES)
+    sandwich = models.ForeignKey(Sandwich, on_delete=models.SET_NULL, null=True, blank=False)
     bread_type = models.CharField(max_length=255, choices=BREAD_TYPE_CHOICES)
     
     # TODO: set auto_now_add to true and blank to false

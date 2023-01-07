@@ -8,7 +8,10 @@
         <span class="green">Email: </span>{{ orderData.email }}
       </p>
       <p>
-        <span class="green">Sandwich: </span>{{ getSandwichName }}
+        <span class="green">Sandwich: </span>
+        <NuxtLink
+          :to="'sandwich/' + orderData.sandwich.slug"
+        >{{ orderData.sandwich.name }}</NuxtLink>
       </p>
       <p>
         <span class="green">Bread type: </span>{{ orderData.bread_type }}
@@ -24,13 +27,6 @@ export default {
     props: {
       orderData: {
         type: Object
-      }
-    },
-    computed: {
-      getSandwichName() {
-        return sandwiches.filter((sandwich) => {
-          return sandwich.id == this.orderData.sandwich
-        })[0].name
       }
     }
 }
