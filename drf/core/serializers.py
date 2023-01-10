@@ -2,6 +2,11 @@ from rest_framework import serializers
 from core.models import Order
 from sandwiches.models import Sandwich
 
+class SandwichSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Sandwich
+        fields = ['name', 'slug', 'id']
+
 class OrderSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source="owner.username")
     order_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", read_only=True)

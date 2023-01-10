@@ -5,6 +5,8 @@ from core.serializers import OrderSerializer
 from django.utils import timezone
 from rest_framework import generics
 from sandwiches.models import Sandwich
+from django.forms.models import model_to_dict
+from core.serializers import SandwichSerializer
 
 class IndexView(APIView):
     def get(self, request):
@@ -32,19 +34,20 @@ class OrderList(generics.ListCreateAPIView):
     def list(self, request, *args, **kwargs):
         response = super().list(request, *args, **kwargs)
 
-        # replace the pk for more useful data like id, name and slug
-        # TODO: I wonder if there is a better way to do this, I could change
-        # the serializer but I do want to keep the behavior of sending id's on POST
+        # expand sandwich representation for each order
         for index, order in enumerate(response.data):
-            sandwich_pk = order['sandwich']
-            sandwich_obj = Sandwich.objects.get(pk=sandwich_pk)
-            sandwich_dict = {
-                'id': sandwich_pk,
-                'name': sandwich_obj.name,
-                'slug': sandwich_obj.slug,
-            }
+            serializer = SandwichSerializer(Sandwich.objects.get(pk=order['sandwich']))
+            response.data[index]['sandwich'] = serializer.data
 
-            response.data[index]['sandwich'] = sandwich_dict
+        return response
+
+    def create(self, request, *args, **kwargs):
+        response = super().create(request, *args, **kwargs)
+
+        # expand sandwich representation
+        serializer = SandwichSerializer(Sandwich.objects.get(pk=response.data['sandwich']))
+        response.data['sandwich'] = serializer.data
+
         return response
 
     def perform_create(self, serializer):
