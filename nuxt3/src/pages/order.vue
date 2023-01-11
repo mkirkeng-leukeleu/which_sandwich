@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import { formatDateString } from "~/utils"
+
 export default {
 	setup() {
     definePageMeta({
@@ -32,12 +34,15 @@ export default {
 			this.isLoading = true;
 
 			// ask API if there's an order already saved
-			fetch(this.appConfig.API_URL + "/orders/?today", {
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Token " + localStorage.getItem("API_token")
-        }
-      })
+			fetch(
+				this.appConfig.API_URL + "/orders/?order_date=" + formatDateString(new Date()),
+				{
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Token " + localStorage.getItem("API_token")
+					}
+				}
+			)
 				.then(res => res.json())
 				.then(json => {
 					this.order = (json.length == 0) ? null : json[0];

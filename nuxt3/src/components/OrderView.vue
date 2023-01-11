@@ -2,7 +2,10 @@
   <div class="container">
     <div>
       <p>
-        <span class="green">Ordered on: </span>{{ orderData.order_date }}
+        <span class="green">Ordered for: </span>{{ orderData.order_date }}
+      </p>
+      <p>
+        <span class="green">Ordered created: </span>{{ orderData.created }}
       </p>
       <p>
         <span class="green">Email: </span>{{ orderData.email }}

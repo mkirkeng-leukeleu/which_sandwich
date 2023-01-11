@@ -9,7 +9,7 @@ class SandwichSerializer(serializers.ModelSerializer):
 
 class OrderSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source="owner.username")
-    order_date = serializers.DateTimeField(read_only=True)
+    order_date = serializers.DateField(read_only=True)
     sandwich = serializers.PrimaryKeyRelatedField(
         allow_null=False,
         queryset=Sandwich.objects.all(),
@@ -18,4 +18,5 @@ class OrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields = ['id', 'owner', 'email', 'sandwich', 'bread_type', 'order_date']
+        fields = ['id', 'owner', 'created', 'email',
+                  'sandwich', 'bread_type', 'order_date']

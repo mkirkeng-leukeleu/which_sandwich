@@ -5,7 +5,7 @@ from core.serializers import OrderSerializer
 from django.utils import timezone
 from rest_framework import generics
 from sandwiches.models import Sandwich
-from django.forms.models import model_to_dict
+from django_filters.rest_framework import DjangoFilterBackend
 from core.serializers import SandwichSerializer
 
 class IndexView(APIView):
@@ -23,12 +23,10 @@ class HelloView(APIView):
 class OrderList(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = OrderSerializer
-    # TODO: use django filters for today filter
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ["order_date"]
 
     def get_queryset(self):
-        if 'today' in self.request.query_params: # /?today
-            return self.request.user.orders.filter(order_date__date=timezone.now().date())
-
         return self.request.user.orders.all()
 
     def list(self, request, *args, **kwargs):
