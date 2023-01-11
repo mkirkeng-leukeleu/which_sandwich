@@ -64,7 +64,7 @@ INSTALLED_APPS = [
     'wagtail.api.v2',
 
     # custom
-    'core',
+    'api',
     'sandwiches',
 ]
 

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.authtoken.views import obtain_auth_token
-import core.views
+import api.views
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
@@ -15,10 +15,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('get-api-token/', obtain_auth_token, name='get_api_token'),
     
-    # core
-    path('', core.views.IndexView.as_view(), name='index'),
-    path('hello/', core.views.HelloView.as_view(), name='hello'),
-    path('orders/', core.views.OrderList.as_view(), name='orders'),
+    # api
+    path('', api.views.IndexView.as_view(), name='index'),
+    path('hello/', api.views.HelloView.as_view(), name='hello'),
+    path('orders/', api.views.OrderList.as_view(), name='orders'),
 
     # wagtail
     path('sandwiches/', api_router.urls),

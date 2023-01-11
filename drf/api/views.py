@@ -1,12 +1,12 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from core.serializers import OrderSerializer
+from api.serializers import OrderSerializer
 from django.utils import timezone
 from rest_framework import generics
 from sandwiches.models import Sandwich
 from django_filters.rest_framework import DjangoFilterBackend
-from core.serializers import SandwichSerializer
+from api.serializers import SandwichSerializer
 
 class IndexView(APIView):
     def get(self, request):

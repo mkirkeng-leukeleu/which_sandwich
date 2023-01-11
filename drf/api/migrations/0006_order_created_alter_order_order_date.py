@@ -7,7 +7,7 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0005_alter_order_sandwich'),
+        ('api', '0005_alter_order_sandwich'),
     ]
 
     operations = [

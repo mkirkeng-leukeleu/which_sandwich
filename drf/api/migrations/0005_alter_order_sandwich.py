@@ -8,7 +8,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('sandwiches', '0004_sandwich_image'),
-        ('core', '0004_alter_order_order_date'),
+        ('api', '0004_alter_order_order_date'),
     ]
 
     operations = [

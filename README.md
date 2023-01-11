@@ -9,10 +9,10 @@ It can be deployed as a traditional SPA hosted using a NodeJS server, be rendere
 The about page is created from a markdown file in this repository using a [Nuxt Content V2](https://content.nuxtjs.org/) while the sandwich pages are created from the Wagtail backend.
 
 The backend uses Django and contains two applications:
- - 'core' for the orders which uses [Django rest framework](https://www.django-rest-framework.org/)
+ - 'api' for the orders which uses [Django rest framework](https://www.django-rest-framework.org/)
  - 'sandwiches' for the database of available sandwiches which uses headless [Wagtail](https://wagtail.org/) as CMS
 
 
 # Known issues/TODOs
 - The project does not use the file structure generally used by Leukeleu.
-- Core is not a very descriptive name for a django app.
+- ~~Core is not a very descriptive name for a django app.~~

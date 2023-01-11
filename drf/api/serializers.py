@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from core.models import Order
+from api.models import Order
 from sandwiches.models import Sandwich
 
 class SandwichSerializer(serializers.ModelSerializer):
