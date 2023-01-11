@@ -33,12 +33,12 @@ export default {
   methods: {
     getSandwichList() {
       fetch(
-        this.appConfig.API_URL + '/sandwiches/pages/?type=sandwiches.sandwich&fields=_,id,slug,name,image,short_description'
+        this.appConfig.SANDWICHES_URL + '/pages/?type=sandwiches.sandwich&fields=_,id,slug,name,image,short_description'
       ).then(res => res.json())
       .then(json => this.sandwiches = json.items)
     },
     getImageUrl(sandwich) {
-      return this.appConfig.API_URL + sandwich?.image?.url
+      return this.appConfig.SANDWICHES_URL + sandwich?.image?.url
     }
   }
 }

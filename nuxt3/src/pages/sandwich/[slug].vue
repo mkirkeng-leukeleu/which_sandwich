@@ -30,7 +30,7 @@ export default {
   methods: {
     getSandwichPage() {
       fetch(
-        this.appConfig.API_URL + "/sandwiches/pages/find/?html_path=" +
+        this.appConfig.SANDWICHES_URL + "/pages/find/?html_path=" +
         this.$route.params.slug
       ).then(res => res.json())
       .then(json => this.sandwich = json)
@@ -38,7 +38,7 @@ export default {
   },
   computed: {
     getImageUrl() {
-      return this.appConfig.API_URL + this.sandwich?.image?.url
+      return this.appConfig.SANDWICHES_URL + this.sandwich?.image?.url
     }
   }
 }

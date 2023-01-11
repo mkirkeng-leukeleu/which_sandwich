@@ -8,11 +8,6 @@ from sandwiches.models import Sandwich
 from django_filters.rest_framework import DjangoFilterBackend
 from api.serializers import SandwichSerializer
 
-class IndexView(APIView):
-    def get(self, request):
-        content = {'message': 'Welcome the which sandwhich backend!'}
-        return Response(content)
-
 class HelloView(APIView):
     permission_classes = [IsAuthenticated]
 

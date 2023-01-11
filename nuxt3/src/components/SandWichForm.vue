@@ -65,7 +65,7 @@ export default {
     },
     getSandwichList() {
       fetch(
-        this.appConfig.API_URL + '/sandwiches/pages/?type=sandwiches.sandwich&fields=_,id,slug,name'
+        this.appConfig.SANDWICHES_URL + '/pages/?type=sandwiches.sandwich&fields=_,id,slug,name'
       ).then(res => res.json())
       .then(json => this.sandwiches = json.items)
     }
