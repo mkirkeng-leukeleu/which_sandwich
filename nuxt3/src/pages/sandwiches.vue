@@ -38,7 +38,7 @@ export default {
       .then(json => this.sandwiches = json.items)
     },
     getImageUrl(sandwich) {
-      return this.appConfig.API_URL + sandwich?.image?.meta.download_url
+      return this.appConfig.API_URL + sandwich?.image?.url
     }
   }
 }

@@ -38,7 +38,7 @@ export default {
   },
   computed: {
     getImageUrl() {
-      return this.appConfig.API_URL + this.sandwich?.image?.meta.download_url
+      return this.appConfig.API_URL + this.sandwich?.image?.url
     }
   }
 }

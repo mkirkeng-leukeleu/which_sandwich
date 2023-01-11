@@ -4,7 +4,7 @@ from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.api import APIField
-from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.images.api.fields import ImageRenditionField
 
 class Sandwiches(Page):
     pass
@@ -33,5 +33,5 @@ class Sandwich(Page):
         APIField('short_description'),
         APIField('vegetarian'),
         APIField('long_description'),
-        APIField('image'),
+        APIField('image', serializer=ImageRenditionField('max-800x800')),
     ]
