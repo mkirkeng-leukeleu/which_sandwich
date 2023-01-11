@@ -6,6 +6,7 @@ from django.utils import timezone
 from rest_framework import generics
 from sandwiches.models import Sandwich
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import OrderingFilter
 from api.serializers import SandwichSerializer
 
 class HelloView(APIView):
@@ -18,8 +19,9 @@ class HelloView(APIView):
 class OrderList(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = OrderSerializer
-    filter_backends = [DjangoFilterBackend]
+    filter_backends = [DjangoFilterBackend, OrderingFilter]
     filterset_fields = ["order_date"]
+    ordering = ['-created']
 
     def get_queryset(self):
         return self.request.user.orders.all()
