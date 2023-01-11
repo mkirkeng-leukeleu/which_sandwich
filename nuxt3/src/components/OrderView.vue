@@ -2,10 +2,10 @@
   <div class="container">
     <div>
       <p>
-        <span class="green">Ordered for: </span>{{ orderData.order_date }}
+        <span class="green">Ordered for: </span>{{ formattedOrderDate }}
       </p>
       <p>
-        <span class="green">Ordered created: </span>{{ orderData.created }}
+        <span class="green">Order created: </span>{{ orderData.created }}
       </p>
       <p>
         <span class="green">Email: </span>{{ orderData.email }}
@@ -27,11 +27,24 @@
 import sandwiches from '../sandwiches';
 
 export default {
-    props: {
-      orderData: {
-        type: Object
-      }
+  props: {
+    orderData: {
+      type: Object
     }
+  },
+  computed: {
+    formattedOrderDate() {
+      const date = new Date(this.orderData.order_date);
+      const options = {
+        year: "numeric",
+        weekday: "long",
+        month: "short",
+        day: "numeric",
+      }
+
+      return date.toLocaleDateString('nl-nl', options)
+    }
+  }
 }
 </script>
 
